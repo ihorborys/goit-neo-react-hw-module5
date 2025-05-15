@@ -1,0 +1,24 @@
+.form {
+    margin-bottom: 40px;
+}
+
+.formWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.input {
+    padding: 20px 40px;
+    text-align: center;
+    font-family: Montserrat, sans-serif;
+    font-size: 20px;
+}
+
+.button {
+    padding: 20px 40px;
+    font-family: Montserrat, sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+}
