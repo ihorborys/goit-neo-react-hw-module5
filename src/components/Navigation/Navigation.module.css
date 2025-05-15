@@ -4,7 +4,7 @@
     align-items: center;
     font-size: 24px;
     font-weight: bold;
-    margin-bottom: 40px;
+    margin: 40px 0;
 }
 
 .active {
@@ -12,6 +12,6 @@
     text-decoration: underline;
 }
 
-.navigationItem {
-    list-style: none;
-}
+/*.navigationItem {*/
+/*    list-style: none;*/
+/*}*/
