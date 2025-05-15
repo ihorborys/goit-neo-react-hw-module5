@@ -5,6 +5,7 @@
     font-size: 24px;
     font-weight: bold;
     margin: 40px 0;
+    padding-inline-start: 0;
 }
 
 .active {
@@ -12,6 +13,6 @@
     text-decoration: underline;
 }
 
-/*.navigationItem {*/
-/*    list-style: none;*/
-/*}*/
+.navigationItem {
+    list-style: none;
+}
