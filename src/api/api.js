@@ -1,21 +1,20 @@
 import axios from "axios";
 
 const url =
-  "https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1";
+  "https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US";
 
 const options = {
   headers: {
-    // Замість api_read_access_token вставте свій токен
     Authorization:
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1OWQ0MGNkMWJiODFkODk1YzAzODYyYmQ2NmJkZWE5NiIsIm5iZiI6MTc0NzIyMzEyNy4wOTcsInN1YiI6IjY4MjQ4MjU3NTA5N2M1YzYzZjZlZWVhZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2DPqu3LYTt1qumY62CPu_wHw77SDhmgkBz2a3EuoR3k",
   },
 };
 
-export const getMovies = async () => {
+export const getMovies = async (searchQuery) => {
   const { data } = await axios.get(url, {
     ...options,
     params: {
-      query: "spider-man",
+      query: searchQuery,
       page: 1,
       per_page: 20,
     },

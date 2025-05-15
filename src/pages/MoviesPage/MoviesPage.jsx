@@ -3,20 +3,36 @@ import { useEffect, useState } from "react";
 import { getMovies } from "../../api/api.js";
 import styles from "./MoviesPage.module.css";
 import MovieList from "../../components/MovieList/MovieList.jsx";
+import Loader from "../../components/Loader/Loader.jsx";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage.jsx";
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
-  const [searchQuery, setSearchQuery] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     if (!searchQuery) return;
-    const fetchData = async (query) => {
-      const movies = await getMovies();
-      console.log(movies.results);
-      setMovies(movies.results);
+
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        setErrorMessage("");
+
+        const data = await getMovies(searchQuery);
+        if (data.results.length === 0)
+          setErrorMessage("Sorry, can't find anything");
+
+        setMovies(data.results);
+      } catch (error) {
+        setErrorMessage(error.message);
+      } finally {
+        setLoading(false);
+      }
     };
     fetchData();
-  }, []);
+  }, [searchQuery]);
 
   // useEffect(() => {
   //   if (!searchQuery) return;
@@ -46,18 +62,18 @@ const MoviesPage = () => {
   //
   // const handleSearch = () => {};
 
-  const handleSubmit = (value) => {
-    console.log(value.query);
-  };
-
-  // const handleSearch = (value) => {
-  //   // setPage(1);
-  //   setSearchQuery(value.query);
+  // const handleSubmit = (value) => {
+  //   console.log(value.query);
   // };
+
+  const handleSearch = (values) => {
+    console.log(values);
+    if (values.query.trim().length > 0) setSearchQuery(values.query);
+  };
 
   return (
     <div className={styles.moviePageWrapper}>
-      <Formik initialValues={{ query: "" }} onSubmit={handleSubmit}>
+      <Formik initialValues={{ query: "" }} onSubmit={handleSearch}>
         <Form className={styles.form}>
           <div className={styles.formWrapper}>
             <Field
@@ -74,7 +90,9 @@ const MoviesPage = () => {
           </div>
         </Form>
       </Formik>
-      <MovieList movies={movies} />;
+      <MovieList movies={movies} />
+      {loading && <Loader />}
+      {errorMessage && <ErrorMessage errorMessage={errorMessage} />}
     </div>
   );
 };

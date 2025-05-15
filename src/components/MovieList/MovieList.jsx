@@ -6,7 +6,6 @@ const MovieList = ({ movies }) => {
       {movies.map((movie) => (
         <li key={movie.id}>{movie.original_title}</li>
       ))}
-      ;
     </ul>
   );
 };
