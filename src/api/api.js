@@ -1,7 +1,9 @@
 import axios from "axios";
 
-const url =
+const searchUrl =
   "https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US";
+
+const baseUrl = "https://api.themoviedb.org/3/movie/";
 
 const options = {
   headers: {
@@ -11,7 +13,7 @@ const options = {
 };
 
 export const getMovies = async (searchQuery) => {
-  const { data } = await axios.get(url, {
+  const { data } = await axios.get(searchUrl, {
     ...options,
     params: {
       query: searchQuery,
@@ -23,20 +25,9 @@ export const getMovies = async (searchQuery) => {
   return data;
 };
 
-// .get(url, options)
-// .then((response) => console.log(response))
-// .catch((err) => console.error(err));
-
-// axios.defaults.baseURL = "https://api.unsplash.com";
-//
-// export const getMovies = async (searchQuery, page) => {
-//   const { data } = await axios.get("/search/photos", {
-//     params: {
-//       client_id: "QMyvt8jb24108khvQVvUu6GbAKmLMegr2UZ9NZ7VatM",
-//       query: searchQuery,
-//       page: page,
-//       per_page: 20,
-//     },
-//   });
-//   return data;
-// };
+export const getSelectedMovie = async (movieId) => {
+  const { data } = await axios.get(`${baseUrl}${movieId}`, options);
+  console.log(data);
+  console.log(movieId);
+  return data;
+};

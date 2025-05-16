@@ -6,3 +6,11 @@
     font-size: 20px;
     list-style: square;
 }
+
+.item:hover {
+    color: teal;
+}
+
+.link:hover {
+    color: teal;
+}
