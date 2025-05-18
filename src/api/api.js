@@ -5,6 +5,8 @@ const searchUrl =
 
 const baseUrl = "https://api.themoviedb.org/3/movie/";
 
+// const configUrl = "https://api.themoviedb.org/3/configuration";
+
 const options = {
   headers: {
     Authorization:
@@ -25,9 +27,9 @@ export const getMovies = async (searchQuery) => {
   return data;
 };
 
-export const getSelectedMovie = async (movieId) => {
-  const { data } = await axios.get(`${baseUrl}${movieId}`, options);
+export const getSelectedMovie = async (id) => {
+  const { data } = await axios.get(`${baseUrl}${id}`, options);
   console.log(data);
-  console.log(movieId);
+  console.log(id);
   return data;
 };
