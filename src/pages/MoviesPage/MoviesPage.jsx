@@ -34,38 +34,6 @@ const MoviesPage = () => {
     fetchData();
   }, [searchQuery]);
 
-  // useEffect(() => {
-  //   if (!searchQuery) return;
-  //
-  //   const fetchData = async () => {
-  //     try {
-  //       setLoading(true);
-  //       setErrorMessage("");
-  //
-  //       const data = await getImages(searchQuery, page);
-  //       if (data.results.length === 0)
-  //         setErrorMessage("Sorry, can't find anything");
-  //
-  //       setDataState((prevDataState) => {
-  //         return page === 1
-  //           ? data.results
-  //           : [...prevDataState, ...data.results];
-  //       });
-  //     } catch (error) {
-  //       setErrorMessage(error.message);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-  //   fetchData();
-  // }, [searchQuery, page]);
-  //
-  // const handleSearch = () => {};
-
-  // const handleSubmit = (value) => {
-  //   console.log(value.query);
-  // };
-
   const handleSearch = (values) => {
     console.log(values);
     if (values.query.trim().length > 0) setSearchQuery(values.query);

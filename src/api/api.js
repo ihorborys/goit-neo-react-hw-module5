@@ -1,11 +1,12 @@
 import axios from "axios";
 
-const searchUrl =
+const getMoviesUrl =
   "https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US";
 
-const baseUrl = "https://api.themoviedb.org/3/movie/";
+const getSelectedMovieUrl = "https://api.themoviedb.org/3/movie/";
 
-// const configUrl = "https://api.themoviedb.org/3/configuration";
+export const posterUrl = "https://image.tmdb.org/t/p/w300";
+export const profileUrl = "https://image.tmdb.org/t/p/w185";
 
 const options = {
   headers: {
@@ -15,7 +16,7 @@ const options = {
 };
 
 export const getMovies = async (searchQuery) => {
-  const { data } = await axios.get(searchUrl, {
+  const { data } = await axios.get(getMoviesUrl, {
     ...options,
     params: {
       query: searchQuery,
@@ -23,13 +24,21 @@ export const getMovies = async (searchQuery) => {
       per_page: 20,
     },
   });
-  console.log(data);
   return data;
 };
 
 export const getSelectedMovie = async (id) => {
-  const { data } = await axios.get(`${baseUrl}${id}`, options);
-  console.log(data);
-  console.log(id);
+  const { data } = await axios.get(`${getSelectedMovieUrl}${id}`, options);
   return data;
 };
+
+export const getSelectedMovieCast = async (id) => {
+  const { data } = await axios.get(
+    `${getSelectedMovieUrl}${id}/credits`,
+    options,
+  );
+  return data;
+};
+
+export const defaultImg =
+  "https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg";

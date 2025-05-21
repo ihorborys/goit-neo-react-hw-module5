@@ -2,13 +2,33 @@ ul, li, p {
     all: unset;
 }
 
+.container {
+    margin: 0 auto;
+    max-width: 320px;
+    padding: 0 40px;
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 768px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .container {
+        max-width: 1280px;
+    }
+}
+
 .imageInfoWrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 40px;
-    border: 1px solid teal;
+    border-right: 1px solid teal;
+    border-top: 1px solid teal;
+    /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
     padding: 10px;
 }
 
@@ -44,6 +64,19 @@ ul, li, p {
 .imageInfoItemParagValue {
     font-size: 20px;
     text-align: center;
+}
+
+.addInfo {
+    margin-top: 20px;
+    /*border: 1px solid teal;*/
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.addInfoTitle {
+    font-size: 20px;
+    font-weight: 500;
 }
 
 @media screen and (min-width: 768px) {

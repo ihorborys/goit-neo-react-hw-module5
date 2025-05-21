@@ -1,0 +1,25 @@
+.navigationList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0;
+    padding-inline-start: 0;
+}
+
+.navigationItem {
+    list-style: none;
+}
+
+.navigationItem:hover {
+    color: teal;
+    text-decoration: underline 1px;
+    opacity: 0.6;
+}
+
+.active {
+    color: teal;
+    text-decoration: underline;
+}
