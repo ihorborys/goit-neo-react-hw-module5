@@ -1,0 +1,38 @@
+.container {
+    border-left: 1px solid teal;
+    border-bottom: 1px solid teal;
+    /*padding: 0 10px;*/
+}
+
+.list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+.image {
+    object-fit: cover;
+}
+
+.author {
+    margin: 10px 0 20px;
+    font-weight: bold;
+    width: 185px;
+}
+
+.content {
+    padding: 0 10px;
+}

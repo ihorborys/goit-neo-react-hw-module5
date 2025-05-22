@@ -3,10 +3,13 @@ import { useEffect, useState } from "react";
 import { defaultImg, getSelectedMovie, posterUrl } from "../../api/api.js";
 import styles from "./MovieDetailsPage.module.css";
 import MovieDetailsPageNav from "../../components/Navigation/MovieDetailsPageNav/MovieDetailsPageNav.jsx";
+import Loader from "../../components/Loader/Loader.jsx";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage.jsx";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
@@ -14,10 +17,18 @@ const MovieDetailsPage = () => {
 
     const fetchData = async () => {
       try {
+        setLoading(true);
+        setErrorMessage("");
+
         const movieData = await getSelectedMovie(movieId);
+        if (movieData.length === 0)
+          setErrorMessage("Sorry, can't find anything");
+
         setMovie(movieData);
       } catch (error) {
         setErrorMessage(error.message);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -68,6 +79,7 @@ const MovieDetailsPage = () => {
               </li>
             </ul>
           </div>
+
           <div className={styles.addInfo}>
             <p className={styles.addInfoTitle}>Additional information</p>
             <MovieDetailsPageNav />
@@ -75,6 +87,8 @@ const MovieDetailsPage = () => {
           <Outlet />
         </div>
       )}
+      {loading && <Loader />}
+      {errorMessage && <ErrorMessage errorMessage={errorMessage} />}
     </div>
   );
 };
