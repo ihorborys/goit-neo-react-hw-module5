@@ -18,7 +18,7 @@ const MovieCast = () => {
 
         const movieTrendingData = await getMovieTrending();
         if (movieTrendingData.results.length === 0)
-          setErrorMessage("Sorry, can't find anything");
+          setErrorMessage("Sorry, can't find anything...");
 
         setMovieTrending(movieTrendingData);
       } catch (error) {

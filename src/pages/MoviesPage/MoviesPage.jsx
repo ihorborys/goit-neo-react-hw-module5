@@ -22,7 +22,7 @@ const MoviesPage = () => {
 
         const data = await getMovies(searchQuery);
         if (data.results.length === 0)
-          setErrorMessage("Sorry, can't find anything");
+          setErrorMessage("Sorry, can't find anything...");
 
         setMovies(data.results);
       } catch (error) {

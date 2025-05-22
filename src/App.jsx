@@ -6,6 +6,7 @@ import MoviesPage from "./pages/MoviesPage/MoviesPage.jsx";
 import MovieDetailsPage from "./pages/MovieDetailsPage/MovieDetailsPage.jsx";
 import MovieCast from "./components/MovieCast/MovieCast.jsx";
 import MovieReviews from "./components/MovieReviews/MovieReviews.jsx";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage.jsx";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="cast" element={<MovieCast />} />
           <Route path="reviews" element={<MovieReviews />} />
         </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
   );

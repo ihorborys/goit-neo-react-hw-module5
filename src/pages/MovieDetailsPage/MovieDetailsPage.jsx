@@ -22,7 +22,7 @@ export const MovieDetailsPage = () => {
 
         const movieData = await getSelectedMovie(movieId);
         if (movieData.length === 0)
-          setErrorMessage("Sorry, can't find anything");
+          setErrorMessage("Sorry, can't find anything...");
 
         setMovie(movieData);
       } catch (error) {

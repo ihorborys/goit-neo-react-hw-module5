@@ -23,7 +23,7 @@ const MovieCast = () => {
 
         const movieCastData = await getSelectedMovieCast(movieId);
         if (movieCastData.length === 0)
-          setErrorMessage("Sorry, can't find anything");
+          setErrorMessage("Sorry, can't find anything...");
 
         setMovieCast(movieCastData);
       } catch (error) {

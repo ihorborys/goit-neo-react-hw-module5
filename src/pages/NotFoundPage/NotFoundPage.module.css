@@ -1,0 +1,12 @@
+.container {
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.message {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+    margin: 20px;
+}

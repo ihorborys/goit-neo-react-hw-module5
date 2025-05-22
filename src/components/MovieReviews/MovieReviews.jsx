@@ -28,7 +28,7 @@ const MovieCast = () => {
 
         const movieReviewsData = await getSelectedMovieReviews(movieId);
         if (movieReviewsData.results.length === 0)
-          setErrorMessage("Sorry, can't find anything");
+          setErrorMessage("Sorry, can't find anything...");
 
         setmovieReviews(movieReviewsData);
       } catch (error) {
