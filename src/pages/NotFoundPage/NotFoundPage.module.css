@@ -4,9 +4,23 @@
 }
 
 .message {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: bold;
     text-align: center;
     color: black;
-    margin: 20px;
+    margin: 40px;
+}
+
+.link {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    color: teal;
+    margin-bottom: 10px;
+}
+
+.link:hover {
+    color: teal;
+    text-decoration: underline 1px;
+    opacity: 0.6;
 }

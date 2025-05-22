@@ -10,7 +10,7 @@ const Navigation = () => {
     <div className={styles.container}>
       <ul className={styles.navigationList}>
         <li className={styles.navigationItem}>
-          <NavLink to="/public" className={navClasses}>
+          <NavLink to="/" className={navClasses}>
             Home
           </NavLink>
         </li>
