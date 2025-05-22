@@ -1,0 +1,25 @@
+.container {
+    border-left: 1px solid teal;
+    border-bottom: 1px solid teal;
+}
+
+.list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin: 40px 0;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.title {
+    text-align: center;
+}

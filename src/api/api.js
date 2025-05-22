@@ -1,9 +1,14 @@
 import axios from "axios";
 
-const getMoviesUrl =
+export const defaultImg =
+  "https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg";
+
+const moviesUrl =
   "https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US";
 
-const getSelectedMovieUrl = "https://api.themoviedb.org/3/movie/";
+const selectedMovieUrl = "https://api.themoviedb.org/3/movie/";
+
+const movieTrendingUrl = "https://api.themoviedb.org/3/trending/movie/";
 
 export const posterUrl = "https://image.tmdb.org/t/p/w300";
 export const profileUrl = "https://image.tmdb.org/t/p/w185";
@@ -16,7 +21,7 @@ const options = {
 };
 
 export const getMovies = async (searchQuery) => {
-  const { data } = await axios.get(getMoviesUrl, {
+  const { data } = await axios.get(moviesUrl, {
     ...options,
     params: {
       query: searchQuery,
@@ -28,25 +33,21 @@ export const getMovies = async (searchQuery) => {
 };
 
 export const getSelectedMovie = async (id) => {
-  const { data } = await axios.get(`${getSelectedMovieUrl}${id}`, options);
+  const { data } = await axios.get(`${selectedMovieUrl}${id}`, options);
   return data;
 };
 
 export const getSelectedMovieCast = async (id) => {
-  const { data } = await axios.get(
-    `${getSelectedMovieUrl}${id}/credits`,
-    options,
-  );
+  const { data } = await axios.get(`${selectedMovieUrl}${id}/credits`, options);
   return data;
 };
 
 export const getSelectedMovieReviews = async (id) => {
-  const { data } = await axios.get(
-    `${getSelectedMovieUrl}${id}/reviews`,
-    options,
-  );
+  const { data } = await axios.get(`${selectedMovieUrl}${id}/reviews`, options);
   return data;
 };
 
-export const defaultImg =
-  "https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg";
+export const getMovieTrending = async () => {
+  const { data } = await axios.get(`${movieTrendingUrl}/week`, options);
+  return data;
+};

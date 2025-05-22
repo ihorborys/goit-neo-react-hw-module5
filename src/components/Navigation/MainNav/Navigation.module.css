@@ -19,3 +19,9 @@
 .navigationItem {
     list-style: none;
 }
+
+.navigationItem:hover {
+    color: teal;
+    text-decoration: underline 1px;
+    opacity: 0.6;
+}

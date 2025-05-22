@@ -6,7 +6,7 @@ import MovieDetailsPageNav from "../../components/Navigation/MovieDetailsPageNav
 import Loader from "../../components/Loader/Loader.jsx";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage.jsx";
 
-const MovieDetailsPage = () => {
+export const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -88,7 +88,9 @@ const MovieDetailsPage = () => {
         </div>
       )}
       {loading && <Loader />}
-      {errorMessage && <ErrorMessage errorMessage={errorMessage} />}
+      {errorMessage && (
+        <ErrorMessage errorMessage={errorMessage} clasName={styles.error} />
+      )}
     </div>
   );
 };
