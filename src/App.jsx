@@ -1,6 +1,5 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import Navigation from "./components/Navigation/MainNav/Navigation.jsx";
 import HomePage from "./pages/HomePage/HomePage.jsx";
 import MoviesPage from "./pages/MoviesPage/MoviesPage.jsx";
 import MovieDetailsPage from "./pages/MovieDetailsPage/MovieDetailsPage.jsx";

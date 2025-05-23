@@ -5,22 +5,23 @@ import styles from "./MoviesPage.module.css";
 import MovieList from "../../components/MovieList/MovieList.jsx";
 import Loader from "../../components/Loader/Loader.jsx";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage.jsx";
+import { useSearchParams } from "react-router-dom";
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
-    if (!searchQuery) return;
+    if (!searchParams.size) return;
 
     const fetchData = async () => {
       try {
         setLoading(true);
         setErrorMessage("");
 
-        const data = await getMovies(searchQuery);
+        const data = await getMovies(searchValue);
         if (data.results.length === 0)
           setErrorMessage("Sorry, can't find anything...");
 
@@ -32,16 +33,17 @@ const MoviesPage = () => {
       }
     };
     fetchData();
-  }, [searchQuery]);
+  }, [searchParams]);
 
-  const handleSearch = (values) => {
-    console.log(values);
-    if (values.query.trim().length > 0) setSearchQuery(values.query);
+  const handleSubmit = (values) => {
+    if (values.query.trim().length > 0) searchParams.set("query", values.query);
+    setSearchParams(searchParams);
   };
 
+  const searchValue = searchParams.get("query");
   return (
     <div className={styles.moviePageWrapper}>
-      <Formik initialValues={{ query: "" }} onSubmit={handleSearch}>
+      <Formik initialValues={{ query: "" }} onSubmit={handleSubmit}>
         <Form className={styles.form}>
           <div className={styles.formWrapper}>
             <Field
