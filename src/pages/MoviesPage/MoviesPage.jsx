@@ -21,7 +21,7 @@ const MoviesPage = () => {
         setLoading(true);
         setErrorMessage("");
 
-        const data = await getMovies(searchValue);
+        const data = await getMovies(searchParams.get("query"));
         if (data.results.length === 0)
           setErrorMessage("Sorry, can't find anything...");
 
@@ -36,11 +36,17 @@ const MoviesPage = () => {
   }, [searchParams]);
 
   const handleSubmit = (values) => {
+    console.log(values);
+    if (!values.query) {
+      setMovies([]);
+      setErrorMessage("Please, enter a search query");
+      setSearchParams({});
+      return;
+    }
     if (values.query.trim().length > 0) searchParams.set("query", values.query);
     setSearchParams(searchParams);
   };
 
-  const searchValue = searchParams.get("query");
   return (
     <div className={styles.moviePageWrapper}>
       <Formik initialValues={{ query: "" }} onSubmit={handleSubmit}>
