@@ -79,6 +79,35 @@ ul, li, p {
     font-weight: 500;
 }
 
+.buttonBack {
+    color: whitesmoke;
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border-color: teal;
+    background-color: teal;
+    box-shadow: none;
+    /*outline: none; !* Видаляє стандартний контур браузера *!*/
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.buttonBack:hover {
+    opacity: 0.8;
+}
+
+/*.buttonBack:focus {*/
+/*    box-shadow: none;*/
+/*    outline: none; !* Видаляє стандартний контур браузера *!*/
+/*}*/
+
+/*button:focus-visible {*/
+/*    outline: none;*/
+/*    box-shadow: none;*/
+/*}*/
+
 @media screen and (min-width: 768px) {
     .imageInfoWrapper {
         flex-direction: row;

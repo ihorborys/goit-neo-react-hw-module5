@@ -1,5 +1,5 @@
-import { Outlet, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 import { defaultImg, getSelectedMovie, posterUrl } from "../../api/api.js";
 import styles from "./MovieDetailsPage.module.css";
 import MovieDetailsPageNav from "../../components/Navigation/MovieDetailsPageNav/MovieDetailsPageNav.jsx";
@@ -11,6 +11,8 @@ export const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!movieId) return;
@@ -36,8 +38,17 @@ export const MovieDetailsPage = () => {
   }, [movieId]);
   console.log(movie);
 
+  const backLink = useRef(location.state ?? "/movies");
+
+  const handleClick = () => {
+    if (backLink.current) navigate(backLink.current);
+  };
+
   return (
     <div className={styles.container}>
+      <button className={styles.buttonBack} onClick={handleClick}>
+        Go Back
+      </button>
       {movie && (
         <div className={styles.movieDetailsContainer}>
           <div className={styles.imageInfoWrapper}>

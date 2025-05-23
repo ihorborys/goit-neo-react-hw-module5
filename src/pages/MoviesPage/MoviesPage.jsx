@@ -13,6 +13,8 @@ const MoviesPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
 
+  // console.log(location);
+
   useEffect(() => {
     if (!searchParams.size) return;
 

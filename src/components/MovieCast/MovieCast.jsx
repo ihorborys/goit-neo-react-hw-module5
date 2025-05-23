@@ -22,9 +22,9 @@ const MovieCast = () => {
         setErrorMessage("");
 
         const movieCastData = await getSelectedMovieCast(movieId);
-        if (movieCastData.length === 0)
+        console.log(movieCastData);
+        if (movieCastData.cast.length === 0)
           setErrorMessage("Sorry, can't find anything...");
-
         setMovieCast(movieCastData);
       } catch (error) {
         setErrorMessage(error.message);
