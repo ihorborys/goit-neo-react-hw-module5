@@ -11,8 +11,6 @@ const MovieCast = () => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  console.log(movieId);
-
   useEffect(() => {
     if (!movieId) return;
 
@@ -22,7 +20,6 @@ const MovieCast = () => {
         setErrorMessage("");
 
         const movieCastData = await getSelectedMovieCast(movieId);
-        console.log(movieCastData);
         if (movieCastData.cast.length === 0)
           setErrorMessage("Sorry, can't find anything...");
         setMovieCast(movieCastData);

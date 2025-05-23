@@ -32,7 +32,6 @@ const MovieCast = () => {
   }, []);
 
   const { results } = movieTrending || {};
-  console.log(movieTrending);
 
   return (
     <div className={styles.container}>

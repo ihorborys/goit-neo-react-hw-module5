@@ -36,7 +36,6 @@ export const MovieDetailsPage = () => {
 
     fetchData();
   }, [movieId]);
-  console.log(movie);
 
   const backLink = useRef(location.state ?? "/movies");
 

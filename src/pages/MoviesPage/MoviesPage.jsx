@@ -13,8 +13,6 @@ const MoviesPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // console.log(location);
-
   useEffect(() => {
     if (!searchParams.size) return;
 
@@ -38,7 +36,6 @@ const MoviesPage = () => {
   }, [searchParams]);
 
   const handleSubmit = (values) => {
-    console.log(values);
     if (!values.query) {
       setMovies([]);
       setErrorMessage("Please, enter a search query");

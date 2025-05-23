@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-// import { getSelectedMovieCast } from "../../api/api.js";
 import { useParams } from "react-router-dom";
 import styles from "./MovieReviews.module.css";
 import Loader from "../Loader/Loader.jsx";
@@ -15,8 +14,6 @@ const MovieCast = () => {
   const [movieReviews, setmovieReviews] = useState(null);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-
-  console.log(movieId);
 
   useEffect(() => {
     if (!movieId) return;
@@ -42,7 +39,6 @@ const MovieCast = () => {
   }, [movieId]);
 
   const { results } = movieReviews || {};
-  console.log(results);
   return (
     <div className={styles.container}>
       <ul className={styles.list}>
