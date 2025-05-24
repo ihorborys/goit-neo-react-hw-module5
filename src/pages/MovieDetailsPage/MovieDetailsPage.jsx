@@ -52,6 +52,7 @@ export const MovieDetailsPage = () => {
         <div className={styles.movieDetailsContainer}>
           <div className={styles.imageInfoWrapper}>
             <img
+              className={styles.image}
               src={
                 movie.poster_path
                   ? `${posterUrl}${movie.poster_path}`

@@ -8,17 +8,6 @@ ul, li, p {
     padding: 0 40px;
 }
 
-@media screen and (min-width: 768px) {
-    .container {
-        max-width: 768px;
-    }
-}
-
-@media screen and (min-width: 1280px) {
-    .container {
-        max-width: 1280px;
-    }
-}
 
 .imageInfoWrapper {
     display: flex;
@@ -28,9 +17,9 @@ ul, li, p {
     gap: 40px;
     border-right: 1px solid teal;
     border-top: 1px solid teal;
-    /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
     padding: 10px;
 }
+
 
 .imageInfoList {
     display: flex;
@@ -68,7 +57,6 @@ ul, li, p {
 
 .addInfo {
     margin-top: 20px;
-    /*border: 1px solid teal;*/
     padding: 10px;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -89,7 +77,6 @@ ul, li, p {
     border-color: teal;
     background-color: teal;
     box-shadow: none;
-    /*outline: none; !* Видаляє стандартний контур браузера *!*/
     margin-bottom: 20px;
     cursor: pointer;
 }
@@ -98,22 +85,29 @@ ul, li, p {
     opacity: 0.8;
 }
 
-/*.buttonBack:focus {*/
-/*    box-shadow: none;*/
-/*    outline: none; !* Видаляє стандартний контур браузера *!*/
-/*}*/
-
-/*button:focus-visible {*/
-/*    outline: none;*/
-/*    box-shadow: none;*/
-/*}*/
 
 @media screen and (min-width: 768px) {
+    .container {
+        max-width: 768px;
+    }
+
     .imageInfoWrapper {
         flex-direction: row;
     }
 
     .imageInfoItemTitle, .imageInfoItemYear {
         font-size: 24px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .container {
+        max-width: 1280px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .image {
+        width: 240px;
     }
 }
