@@ -1,5 +1,6 @@
 import styles from "./MovieList.module.css";
 import { Link, useLocation } from "react-router-dom";
+import { defaultImg, profileUrl } from "../../api/api.js";
 
 const MovieList = ({ movies }) => {
   const location = useLocation();
@@ -7,8 +8,23 @@ const MovieList = ({ movies }) => {
     <ul className={styles.list}>
       {movies.map((movie) => (
         <li key={movie.id} className={styles.item}>
-          <Link to={`${movie.id}`} className={styles.link} state={location}>
-            {movie.original_title}
+          <Link
+            to={`/movies/${movie.id}`}
+            className={styles.link}
+            state={location}
+          >
+            <img
+              className={styles.image}
+              src={
+                movie.poster_path
+                  ? `${profileUrl}${movie.poster_path}`
+                  : defaultImg
+              }
+              width={185}
+              height={278}
+              alt="Movie poster image"
+            />
+            <p className={styles.title}>{movie.original_title}</p>
           </Link>
         </li>
       ))}

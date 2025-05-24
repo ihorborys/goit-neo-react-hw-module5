@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
-import { defaultImg, getMovieTrending, profileUrl } from "../../api/api.js";
-import { Link } from "react-router-dom";
+import { getMovieTrending } from "../../api/api.js";
 import styles from "./HomePage.module.css";
 import Loader from "../../components/Loader/Loader.jsx";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage.jsx";
+import MovieList from "../../components/MovieList/MovieList.jsx";
 
-const MovieCast = () => {
+const HomePage = () => {
   const [movieTrending, setMovieTrending] = useState(null);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    const fetchCast = async () => {
+    const fetchTrending = async () => {
       try {
         setLoading(true);
         setErrorMessage("");
@@ -28,38 +28,21 @@ const MovieCast = () => {
       }
     };
 
-    fetchCast();
+    fetchTrending();
   }, []);
 
   const { results } = movieTrending || {};
 
+  const movies = results;
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Trending this week</h1>
-      <ul className={styles.list}>
-        {results &&
-          results.map((trendMovie) => (
-            <li key={trendMovie.id} className={styles.item}>
-              <Link to={`/movies/${trendMovie.id}`} className={styles.link}>
-                <img
-                  className={styles.image}
-                  src={
-                    trendMovie.poster_path
-                      ? `${profileUrl}${trendMovie.poster_path}`
-                      : defaultImg
-                  }
-                  width={185}
-                  height={278}
-                  alt="Movie poster image"
-                />
-              </Link>
-            </li>
-          ))}
-      </ul>
+      {movies && <MovieList movies={movies} />}
       {loading && <Loader />}
       {errorMessage && <ErrorMessage errorMessage={errorMessage} />}
     </div>
   );
 };
 
-export default MovieCast;
+export default HomePage;

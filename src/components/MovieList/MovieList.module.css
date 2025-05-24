@@ -1,16 +1,38 @@
 .list {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin: 40px 0;
+}
+
+.link {
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 20px;
-    list-style: square;
+}
+
+.image {
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.image:hover {
+    opacity: 0.6;
+}
+
+.title {
+    font-weight: 500;
+    width: 185px;
 }
 
 .item:hover {
     color: teal;
 }
+
 
 .link:hover {
     color: teal;

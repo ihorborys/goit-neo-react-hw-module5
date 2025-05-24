@@ -42,6 +42,7 @@ const MoviesPage = () => {
       setSearchParams({});
       return;
     }
+
     if (values.query.trim().length > 0) searchParams.set("query", values.query);
     setSearchParams(searchParams);
   };
