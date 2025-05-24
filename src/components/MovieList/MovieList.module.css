@@ -5,6 +5,14 @@
     flex-wrap: wrap;
     gap: 40px;
     margin: 40px 0;
+
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .link {
@@ -15,33 +23,27 @@
     text-align: center;
 }
 
+.link:hover {
+    opacity: 0.6;
+    color: teal;
+}
+
 .image {
     object-fit: cover;
     margin-bottom: 10px;
 }
 
-.image:hover {
-    opacity: 0.6;
-}
-
 .title {
     font-weight: 500;
     width: 185px;
-}
-
-.item:hover {
-    color: teal;
-}
-
-
-.link:hover {
-    color: teal;
+    height: 80px;
 }
 
 @media screen and (max-width: 768px) {
     .image {
         width: 125px;
-        height: auto;
+        height: 185px;
+        object-fit: cover;
     }
 
     .title {

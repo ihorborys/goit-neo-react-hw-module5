@@ -24,7 +24,7 @@ const MovieList = ({ movies }) => {
               height={278}
               alt="Movie poster image"
             />
-            <p className={styles.title}>{movie.original_title}</p>
+            <div className={styles.title}>{movie.original_title}</div>
           </Link>
         </li>
       ))}
