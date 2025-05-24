@@ -37,3 +37,14 @@
 .link:hover {
     color: teal;
 }
+
+@media screen and (max-width: 768px) {
+    .image {
+        width: 125px;
+        height: auto;
+    }
+
+    .title {
+        width: 125px;
+    }
+}
