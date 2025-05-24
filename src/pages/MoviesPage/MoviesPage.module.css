@@ -45,3 +45,13 @@ input:focus {
         flex-direction: row;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .input {
+        padding: 10px 40px;
+    }
+
+    .button {
+        padding: 10px 20px;
+    }
+}
