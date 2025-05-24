@@ -9,25 +9,25 @@ import {
   profileUrl,
 } from "../../api/api.js";
 
-const MovieCast = () => {
+const MovieReviews = () => {
   const { movieId } = useParams();
-  const [movieReviews, setmovieReviews] = useState(null);
+  const [movieReviews, setMovieReviews] = useState(null);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     if (!movieId) return;
 
-    const fetchCast = async () => {
+    const fetchReviews = async () => {
       try {
         setLoading(true);
         setErrorMessage("");
 
         const movieReviewsData = await getSelectedMovieReviews(movieId);
         if (movieReviewsData.results.length === 0)
-          setErrorMessage("Sorry, can't find anything...");
+          setErrorMessage("We don't have any reviews for this movie...");
 
-        setmovieReviews(movieReviewsData);
+        setMovieReviews(movieReviewsData);
       } catch (error) {
         setErrorMessage(error.message);
       } finally {
@@ -35,7 +35,7 @@ const MovieCast = () => {
       }
     };
 
-    fetchCast();
+    fetchReviews();
   }, [movieId]);
 
   const { results } = movieReviews || {};
@@ -67,4 +67,4 @@ const MovieCast = () => {
   );
 };
 
-export default MovieCast;
+export default MovieReviews;
